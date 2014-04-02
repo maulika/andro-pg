@@ -1,0 +1,89 @@
+<?xml version   ="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.lapizza.app"
+    versioncode = "1"
+    version     = "0.0.1">
+    
+    <name>il Fornetto nj</name>
+    
+    <content src="index.html"/>
+    
+    <description>
+        il fornetto App.
+    </description>
+    
+    <author href="http://software.intel.com/html5">
+        Intel Corporation
+    </author>
+    
+	<!-- ICONS -->
+	<icon src="icon.png" width="256" height="256" />
+	
+    <icon src="icon.png" /> <!-- default 72 pixels -->       
+    <icon src="icon.png" gap:platform="ios" width="57" height="57" /> <!-- iPhone 3G, 3GS, iPod Touch 2G, 3G -->
+    <icon src="icon.png" gap:platform="ios" width="72" height="72" /> <!-- iPad 1, 2, iPad mini -->
+    <icon src="icon.png" gap:platform="ios" width="114" height="114" /> <!-- iPhone 4, 4S, iPod Touch 4G -->
+   
+    <icon src="icon.png" gap:platform="android" gap:density="ldpi" /> <!-- 36 pixels -->
+    <icon src="icon.png" gap:platform="android" gap:density="mdpi" /> <!-- 48 pixels -->
+    <icon src="icon.png" gap:platform="android" gap:density="hdpi" /> <!-- 72 pixels -->
+    <icon src="icon.png" gap:platform="android" gap:density="xhdpi" /> <!-- 96 pixels -->
+	
+	<!-- SPLASH SCREENS -->
+        
+    <gap:splash src="splash_screen_03.png" /> <!-- default 320x480 pixels -->
+    <gap:splash src="splash_screen_03.png" gap:platform="ios" width="320" height="480" /> <!-- iPhone 3G, 3GS, iPod Touch 2, 3 -->
+    <gap:splash src="splash_screen_03.png" gap:platform="ios" width="640" height="960" /> <!-- iPhone 4, 4S, iPod Touch 4 -->
+    <gap:splash src="splash_screen_03.png" gap:platform="ios" width="640" height="1136" /> <!-- iPhone 5, iPod Touch 5 -->
+	
+	<gap:splash src="splash_screen_03.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="splash_screen_03.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="splash_screen_03.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="splash_screen_03.png" gap:platform="android" gap:density="xhdpi" />
+	
+   <!--
+        If you do not want any permissions to be added to your app, add the
+        following tag to your config.xml; you will still have the INTERNET
+        permission on your app, which PhoneGap requires.
+    -->
+    <preference name="permissions" value="none"/>
+
+    
+
+        
+    <!-- iOS PREFERENCES -->
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="true" /> <!-- if set to false, the splash screen must be hidden using a JavaScript API -->
+  
+    <!-- for Android -->
+    <preference name="orientation" value="portrait" />
+    <preference name="android-minSdkVersion" value="9" />
+	
+	<gap:platforms>
+        <gap:platform name="android" minVersion="2.1"/>
+        <gap:platform name="webos"/>
+        <gap:platform name="symbian.wrt"/>
+        <gap:platform name="blackberry" project="widgets"/>
+    </gap:platforms>
+
+		
+	<feature name="http://api.phonegap.com/1.0/device"/>
+	<feature name="http://api.phonegap.com/1.0/battery"/>
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/contacts"/>
+	<feature name="http://api.phonegap.com/1.0/file"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/media"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	<feature name="http://api.phonegap.com/1.0/notification"/>
+	
+	<access origin="*" />
+</widget>
+
