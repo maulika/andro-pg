@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Offline DataStore</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+
+<script type="text/javascript">
+document.addEventListener("deviceready", onDeviceReady, false);
+
+var newItem;
+
+var abc;
+var def;
+
+function webServiceCall(){
+	
+	$.post(
+            "http://echo.jsontest.com/key/value/one/two",
+            {language: "php", version: 5},
+           
+		    function(responseText){
+				
+				var cute = JSON.parse(responseText);
+				 abc = cute.one;
+				 def = cute.key;
+				
+				newItem = newItem + '<tr><td>'+abc+'</td><td>'+def+'</td></tr>';
+				$("#webservice_call").html(newItem);
+              
+            },
+            "html"
+        );
+	
+	 
+}
+
+
+function onClassLoad() {
+	
+	 db = window.openDatabase("Database", "1.0", "PhoneGap test3", 200000);
+	db.transaction(populateDB, errorCB, successCB);
+	
+}
+
+function populateDB(tx) {// Populate the database 
+	tx.executeSql('DROP TABLE IF EXISTS test3');//remove & every time create new
+	tx.executeSql('CREATE TABLE IF NOT EXISTS test3 (id,data,ans)');
+	tx.executeSql('INSERT INTO test3 (id, data,ans) VALUES (1, abc,def)');
+}
+
+function errorCB(err) {// Transaction error callback
+	alert('Error: '+err.code);
+}
+
+function successCB() {// Transaction success callback
+	alert('Database Created');
+	//alert('successCB');
+	/*db.transaction(queryDB, errorCB);
+	onServiceCall();
+	//onPostIdServiceCall();
+	iScrollRefresh();*/
+}
+
+function displayDb(){
+	try{
+		tx.executeSql('SELECT * FROM test3', [], querySuccess, errorCB);
+		
+	} catch(exc) {
+		alert('Catch DB');
+	}
+
+}
+
+function querySuccess(tx, results) {
+	
+	alert('In Display');
+	/*var len = results.rows.length;
+	
+	for(var i=0;i<len;i++){
+		var id = results.rows.item(i).id;
+		var data = results.rows.item(i).data;
+		var ans = results.rows.item(i).ans;
+		
+		
+		newItem = newItem + '<tr><td>'+id+'</td><td>'+data+'</td><td>'+ans+'</td></tr>';
+		}*/
+	
+
+}
+
+
+</script>
+
+</head>
+
+<body>
+<div style="float:left;">
+<input type="button" value="Call Web Service" onclick="webServiceCall()"/>
+<br/>
+<input type="button" value="DB Entry" onclick="onClassLoad()"/>
+<br/>
+<input type="button" value="DB Display" onclick="displayDb()"/>
+
+</div>
+<br/><br/><br/><br/>
+
+<table id="webservice_call">
+</table>
+
+
+<br/><br/>
+
+<table id="database_call">
+</table>
+
+
+</body>
+</html>
